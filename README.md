@@ -21,9 +21,7 @@ This project aims to answer several practical questions about robbery incidents 
 - At what days and hours are incidents most concentrated?
 - How do offence categories differ across premises types?
 - Which police divisions recorded the highest totals, and how did their trends change over time?
-
-A secondary goal was to strengthen hands-on skills in **Excel, Power Query, PivotTables, Python, pandas, NumPy, Matplotlib, and exploratory data analysis**.
-
+  
 ---
 
 ## 📊 Data Sources
