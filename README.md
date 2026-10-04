@@ -1,17 +1,17 @@
-# Toronto Robbery Open Data Analysis
+# 🚔 Toronto Robbery Open Data Analysis
 
 An end-to-end exploratory data analysis project using **Toronto Police Service (TPS) Robbery Open Data** to study how reported robbery incidents vary over time, across neighbourhoods, premises types, offence categories, and police divisions.
 
 The project was completed in two stages:
 
-1. **Excel / Power Query / PivotTables** were used to clean the original data, validate fields, build interactive summaries, and explore the dataset visually.
-2. **Python / Jupyter / pandas / NumPy / Matplotlib** were then used to reproduce the analysis programmatically, create reusable visualizations, and export a cleaned analysis-ready dataset.
+1. 📗 **Excel / Power Query / PivotTables** were used to clean the original data, validate fields, build interactive summaries, and explore the dataset visually.
+2. 🐍 **Python / Jupyter / pandas / NumPy / Matplotlib** were then used to reproduce the analysis programmatically, create reusable visualizations, and export a cleaned analysis-ready dataset.
 
 The goal was not only to create charts, but to build a reproducible workflow that moves from **raw public data → cleaned data → structured analysis → visual insights**.
 
 ---
 
-## Project Goals
+## 🎯 Project Goals
 
 This project aims to answer several practical questions about robbery incidents in Toronto:
 
@@ -22,11 +22,9 @@ This project aims to answer several practical questions about robbery incidents 
 - How do offence categories differ across premises types?
 - Which police divisions recorded the highest totals, and how did their trends change over time?
 
-A secondary goal was to strengthen hands-on skills in **Excel, Power Query, PivotTables, Python, pandas, NumPy, Matplotlib, and exploratory data analysis**.
-
 ---
 
-## Data Sources
+## 📊 Data Sources
 
 The data used in this project comes from the **Toronto Police Service Public Safety Data Portal**.
 
@@ -39,7 +37,7 @@ The Robbery Open Data dataset is the primary source used for the analysis. The C
 
 ---
 
-## Dataset Overview
+## 🗂️ Dataset Overview
 
 The original dataset contains incident-level robbery records with fields related to time, location, offence type, neighbourhood, police division, and geographic coordinates.
 
@@ -70,7 +68,7 @@ A key data-quality decision was to use **distinct counts of `EVENT_UNIQUE_ID`** 
 
 ---
 
-## Tools Used
+## 🛠️ Tools Used
 
 | Tool | Purpose |
 |---|---|
@@ -85,13 +83,13 @@ A key data-quality decision was to use **distinct counts of `EVENT_UNIQUE_ID`** 
 
 ---
 
-# Workflow
+# 🔄 Workflow
 
-## 1. Initial Exploration in Excel
+## 1. 📗 Initial Exploration in Excel
 
 The project began in Excel because it provided a fast way to understand the structure of the data and validate useful dimensions before writing code.
 
-### Power Query Cleaning
+### 🧹 Power Query Cleaning
 
 The CSV was imported using **Data → Get Data → From Text/CSV → Transform Data**.
 
@@ -103,7 +101,7 @@ In Power Query:
 - Geographic and neighbourhood fields were preserved for later analysis.
 - A helper field, `DASHBOARD_YEAR`, was created to focus the project on **2014–2025**.
 
-### Excel PivotTables
+### 📈 Excel PivotTables
 
 Several PivotTables were created to answer specific questions.
 
@@ -123,11 +121,11 @@ This Excel phase was important because it helped establish the **business questi
 
 ---
 
-## 2. Reproducing the Analysis in Python
+## 2. 🐍 Reproducing the Analysis in Python
 
 The second stage translated the Excel analysis into code so that the workflow became reproducible and easier to extend.
 
-### Cleaning and Data Preparation
+### 🧼 Cleaning and Data Preparation
 
 The notebook:
 
@@ -152,7 +150,7 @@ print(
 )
 ```
 
-### Recreating Excel PivotTables with pandas
+### 🔁 Recreating Excel PivotTables with pandas
 
 The Excel PivotTables were recreated using `groupby()` and `pd.pivot_table()`.
 
@@ -173,9 +171,9 @@ This demonstrates the same analytical logic in two different environments: **Exc
 
 ---
 
-# Visual Analysis
+# 📸 Visual Analysis
 
-## Robbery Incidents by Year
+## 📈 Robbery Incidents by Year:
 
 ![Toronto Robbery Incidents by Year](images/incidents_by_year.png)
 
@@ -183,7 +181,7 @@ This line chart shows the annual number of distinct robbery incidents from 2014 
 
 ---
 
-## Top 10 Neighbourhoods
+## 🏙️ Top 10 Neighbourhoods:
 
 ![Top 10 Toronto Neighbourhoods](images/top_neighbourhoods.png)
 
@@ -191,7 +189,7 @@ This ranking excludes `NSA` because it does not represent a named neighbourhood.
 
 ---
 
-## Premises Type by Year
+## 🏢 Premises Type by Year:
 
 ![Robbery Incidents by Premises Type and Year](images/premises_by_year.png)
 
@@ -199,7 +197,7 @@ The stacked chart shows both overall annual volume and how incidents are distrib
 
 ---
 
-## Day of Week × Hour Heatmap
+## 🕒 Day of Week × Hour Heatmap:
 
 ![Day and Hour Heatmap](images/day_hour_heatmap.png)
 
@@ -207,7 +205,7 @@ The heatmap uses **green for lower incident counts and red for higher incident c
 
 ---
 
-## Offence Type × Premises Type
+## 🔥 Offence Type × Premises Type:
 
 ![Offence Type by Premises Type](images/offence_premises_heatmap.png)
 
@@ -215,7 +213,7 @@ This matrix highlights how different robbery offence categories are distributed 
 
 ---
 
-## Offence Composition in Top Neighbourhoods
+## 🧭 Offence Composition in Top Neighbourhoods:
 
 ![Neighbourhood Offence Composition](images/neighbourhood_offence_composition.png)
 
@@ -223,7 +221,7 @@ This stacked bar chart compares the composition of major robbery offence categor
 
 ---
 
-## Top 5 Police Divisions Over Time
+## 🚓 Top 5 Police Divisions Over Time:
 
 ![Top 5 Police Divisions](images/top5_divisions.png)
 
