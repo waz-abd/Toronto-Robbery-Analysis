@@ -1,17 +1,17 @@
-# Toronto Robbery Open Data Analysis
+# 🚔 Toronto Robbery Open Data Analysis
 
 An end-to-end exploratory data analysis project using **Toronto Police Service (TPS) Robbery Open Data** to study how reported robbery incidents vary over time, across neighbourhoods, premises types, offence categories, and police divisions.
 
 The project was completed in two stages:
 
-1. **Excel / Power Query / PivotTables** were used to clean the original data, validate fields, build interactive summaries, and explore the dataset visually.
-2. **Python / Jupyter / pandas / NumPy / Matplotlib** were then used to reproduce the analysis programmatically, create reusable visualizations, and export a cleaned analysis-ready dataset.
+1. 📗 **Excel / Power Query / PivotTables** were used to clean the original data, validate fields, build interactive summaries, and explore the dataset visually.
+2. 🐍 **Python / Jupyter / pandas / NumPy / Matplotlib** were then used to reproduce the analysis programmatically, create reusable visualizations, and export a cleaned analysis-ready dataset.
 
 The goal was not only to create charts, but to build a reproducible workflow that moves from **raw public data → cleaned data → structured analysis → visual insights**.
 
 ---
 
-## Project Goals
+## 🎯 Project Goals
 
 This project aims to answer several practical questions about robbery incidents in Toronto:
 
@@ -26,7 +26,7 @@ A secondary goal was to strengthen hands-on skills in **Excel, Power Query, Pivo
 
 ---
 
-## Data Sources
+## 📊 Data Sources
 
 The data used in this project comes from the **Toronto Police Service Public Safety Data Portal**.
 
@@ -39,7 +39,7 @@ The Robbery Open Data dataset is the primary source used for the analysis. The C
 
 ---
 
-## Dataset Overview
+## 🗂️ Dataset Overview
 
 The original dataset contains incident-level robbery records with fields related to time, location, offence type, neighbourhood, police division, and geographic coordinates.
 
@@ -70,7 +70,7 @@ A key data-quality decision was to use **distinct counts of `EVENT_UNIQUE_ID`** 
 
 ---
 
-## Tools Used
+## 🛠️ Tools Used
 
 | Tool | Purpose |
 |---|---|
@@ -85,13 +85,13 @@ A key data-quality decision was to use **distinct counts of `EVENT_UNIQUE_ID`** 
 
 ---
 
-# Workflow
+# 🔄 Workflow
 
-## 1. Initial Exploration in Excel
+## 1. 📗 Initial Exploration in Excel
 
 The project began in Excel because it provided a fast way to understand the structure of the data and validate useful dimensions before writing code.
 
-### Power Query Cleaning
+### 🧹 Power Query Cleaning
 
 The CSV was imported using **Data → Get Data → From Text/CSV → Transform Data**.
 
@@ -103,7 +103,7 @@ In Power Query:
 - Geographic and neighbourhood fields were preserved for later analysis.
 - A helper field, `DASHBOARD_YEAR`, was created to focus the project on **2014–2025**.
 
-### Excel PivotTables
+### 📈 Excel PivotTables
 
 Several PivotTables were created to answer specific questions.
 
@@ -123,11 +123,11 @@ This Excel phase was important because it helped establish the **business questi
 
 ---
 
-## 2. Reproducing the Analysis in Python
+## 2. 🐍 Reproducing the Analysis in Python
 
 The second stage translated the Excel analysis into code so that the workflow became reproducible and easier to extend.
 
-### Cleaning and Data Preparation
+### 🧼 Cleaning Data Preparation, and Analysis
 
 The notebook:
 
@@ -138,44 +138,13 @@ The notebook:
 - Restricts the analysis to **2014–2025**
 - Creates a cleaned `analysis_df`
 - Uses `EVENT_UNIQUE_ID.nunique()` for distinct incident counts
-
-Example:
-
-```python
-analysis_df = df[
-    df['OCC_YEAR'].between(2014, 2025).fillna(False)
-].copy()
-
-print(
-    "Distinct incidents:",
-    analysis_df['EVENT_UNIQUE_ID'].nunique()
-)
-```
-
-### Recreating Excel PivotTables with pandas
-
-The Excel PivotTables were recreated using `groupby()` and `pd.pivot_table()`.
-
-For example, the Excel **Year × Premises Type** PivotTable becomes:
-
-```python
-year_premises = pd.pivot_table(
-    analysis_df,
-    index='OCC_YEAR',
-    columns='PREMISES_TYPE',
-    values='EVENT_UNIQUE_ID',
-    aggfunc=pd.Series.nunique,
-    fill_value=0
-)
-```
-
-This demonstrates the same analytical logic in two different environments: **Excel for interactive exploration** and **Python for reproducibility and automation**.
+- Recreating Excel PivotTables with pandas
 
 ---
 
-# Visual Analysis
+# 📸 Visual Analysis
 
-## Robbery Incidents by Year
+## 📈 Robbery Incidents by Year
 
 ![Toronto Robbery Incidents by Year](images/incidents_by_year.png)
 
@@ -183,7 +152,7 @@ This line chart shows the annual number of distinct robbery incidents from 2014 
 
 ---
 
-## Top 10 Neighbourhoods
+## 🏙️ Top 10 Neighbourhoods
 
 ![Top 10 Toronto Neighbourhoods](images/top_neighbourhoods.png)
 
@@ -191,7 +160,7 @@ This ranking excludes `NSA` because it does not represent a named neighbourhood.
 
 ---
 
-## Premises Type by Year
+## 🏢 Premises Type by Year
 
 ![Robbery Incidents by Premises Type and Year](images/premises_by_year.png)
 
@@ -199,7 +168,7 @@ The stacked chart shows both overall annual volume and how incidents are distrib
 
 ---
 
-## Day of Week × Hour Heatmap
+## 🕒 Day of Week × Hour Heatmap
 
 ![Day and Hour Heatmap](images/day_hour_heatmap.png)
 
@@ -207,7 +176,7 @@ The heatmap uses **green for lower incident counts and red for higher incident c
 
 ---
 
-## Offence Type × Premises Type
+## 🔥 Offence Type × Premises Type
 
 ![Offence Type by Premises Type](images/offence_premises_heatmap.png)
 
@@ -215,7 +184,7 @@ This matrix highlights how different robbery offence categories are distributed 
 
 ---
 
-## Offence Composition in Top Neighbourhoods
+## 🧭 Offence Composition in Top Neighbourhoods
 
 ![Neighbourhood Offence Composition](images/neighbourhood_offence_composition.png)
 
@@ -223,7 +192,7 @@ This stacked bar chart compares the composition of major robbery offence categor
 
 ---
 
-## Top 5 Police Divisions Over Time
+## 🚓 Top 5 Police Divisions Over Time
 
 ![Top 5 Police Divisions](images/top5_divisions.png)
 
@@ -231,9 +200,9 @@ The five divisions were selected based on their total distinct incident counts o
 
 ---
 
-# Key Findings
+# 💡 Key Findings
 
-## 1. Yearly Trend
+## 1. 📈 Yearly Trend
 
 **2017 recorded the highest number of distinct robbery incidents, with 3,214**, while **2021 recorded the lowest, with 1,802**.
 
@@ -254,7 +223,7 @@ The annual series shows a substantial decline between 2019 and 2021, followed by
 | 2024 | 2,516 |
 | 2025 | 2,011 |
 
-## 2. Highest-Incident Neighbourhoods
+## 2. 🏙️ Highest-Incident Neighbourhoods
 
 Among named neighbourhoods, the highest distinct incident totals were:
 
@@ -266,7 +235,7 @@ Among named neighbourhoods, the highest distinct incident totals were:
 | 4 | Yonge-Bay Corridor (170) | 638 |
 | 5 | York University Heights (27) | 632 |
 
-## 3. Premises Type
+## 3. 🏢 Premises Type
 
 **Outside locations were the dominant premises category**, with **16,229 distinct incidents**, followed by **Commercial locations with 8,462**.
 
@@ -282,7 +251,7 @@ Among named neighbourhoods, the highest distinct incident totals were:
 
 Together, Outside and Commercial locations account for most of the distinct incidents in the analysis period.
 
-## 4. Day and Hour Patterns
+## 4. 🕒 Day and Hour Patterns
 
 Incident counts were generally lower during early-morning hours and higher later in the day.
 
@@ -290,7 +259,7 @@ The **highest day/hour combination was Friday at 21:00 (9 PM), with 355 distinct
 
 The heatmap is useful because it reveals time-of-day patterns that are difficult to see in a flat table.
 
-## 5. Offence Type and Premises Type
+## 5. 🔎 Offence Type and Premises Type
 
 The offence-by-premises analysis shows clear differences in where offence categories are concentrated.
 
@@ -303,7 +272,7 @@ Examples include:
 
 These relationships demonstrate why examining offence type and premises type together provides more information than looking at either variable alone.
 
-## 6. Police Divisions
+## 6. 🚓 Police Divisions
 
 The divisions with the highest distinct incident totals were:
 
@@ -319,32 +288,7 @@ D51 had the highest total across the analysis period. The division trend chart a
 
 ---
 
-# Excel and Python: Why Use Both?
-
-A major part of this project was intentionally performing the analysis in both Excel and Python.
-
-### Excel was useful for:
-
-- Quickly exploring an unfamiliar dataset
-- Testing potential dimensions and metrics
-- Building PivotTables without writing code
-- Creating interactive filters and slicers
-- Visually validating whether a proposed analysis was meaningful
-
-### Python was useful for:
-
-- Making the workflow reproducible
-- Automating data transformations
-- Recreating PivotTable logic with code
-- Creating reusable analysis objects
-- Exporting cleaned datasets and summary tables
-- Making it easier to extend the project later into Power BI, statistical analysis, or additional visualizations
-
-Using both tools demonstrates the ability to move between **business-user analytics tools** and **programmatic data analysis**.
-
----
-
-# Repository Structure
+# 🗃️ Repository Structure
 
 A recommended repository structure is:
 
@@ -371,11 +315,11 @@ If the raw CSV is too large for your preferred GitHub workflow, it can instead b
 
 ---
 
-# How to Run the Project
+# ▶️ How to Run the Project
 
-## Option 1: Run the Python Notebook
+## 🐍 Option 1: Run the Python Notebook
 
-### Requirements
+### 📦 Requirements
 
 - Python 3.x
 - Jupyter Notebook or JupyterLab
@@ -422,7 +366,7 @@ The notebook will:
 7. Generate Matplotlib visualizations
 8. Export cleaned data and summary tables
 
-## Option 2: Explore the Excel Workbook
+## 📗 Option 2: Explore the Excel Workbook
 
 Open:
 
@@ -441,7 +385,7 @@ If Excel displays an external-data security warning, only enable the connection 
 
 ---
 
-# Data Quality and Limitations
+# ⚠️ Data Quality and Limitations
 
 This analysis has several important limitations:
 
@@ -454,7 +398,7 @@ This analysis has several important limitations:
 
 ---
 
-# Future Improvements
+# 🚀 Future Improvements
 
 Possible next steps include:
 
@@ -468,7 +412,7 @@ Possible next steps include:
 
 ---
 
-# Conclusion
+# ✅ Conclusion
 
 This project demonstrates an end-to-end analytics workflow using official Toronto Police Service open data.
 
@@ -478,7 +422,7 @@ Across **31,320 distinct robbery incidents from 2014–2025**, the analysis iden
 
 ---
 
-## Acknowledgements
+## 🙏 Acknowledgements
 
 Data source: **Toronto Police Service Public Safety Data Portal**.
 
